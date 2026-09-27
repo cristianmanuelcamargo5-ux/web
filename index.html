@@ -1,0 +1,2546 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SáchicaTour | Historia, Cultura y Naturaleza</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script>
+        if (
+            window.location.hash === "#lugares" ||
+            window.location.hash === "#cosas-hacer" ||
+            window.location.hash === "#restaurantes" ||
+            window.location.hash === "#hoteles"
+        ) {
+            document.documentElement.classList.add("entrar-lugares");
+        }
+    </script>
+
+    <style>
+        html.entrar-lugares #intro {
+            display: none !important;
+        }
+
+        #header .nav {
+            min-height: 82px;
+        }
+
+        #menu ul {
+            gap: 16px;
+            align-items: center;
+        }
+
+        #menu a {
+            position: relative;
+            display: inline-block;
+            padding: 11px 3px;
+            color: #ffffff !important;
+            font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            white-space: nowrap;
+            transition:
+                color .3s ease,
+                transform .3s ease;
+        }
+
+        #menu a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 3px;
+            width: 0;
+            height: 3px;
+            border-radius: 10px;
+            background: #f0ca72;
+            transform: translateX(-50%);
+            transition: width .3s ease;
+        }
+
+        #menu a:hover {
+            color: #f0ca72 !important;
+            transform: translateY(-2px);
+        }
+
+        #menu a:hover::after {
+            width: 100%;
+        }
+
+        #curiosidades {
+            position: relative !important;
+            display: block !important;
+            width: 100% !important;
+            padding: 95px 7% !important;
+            overflow: hidden !important;
+            background: linear-gradient(
+                135deg,
+                #f5ead9,
+                #d8b68e
+            ) !important;
+        }
+
+        #curiosidades .contenedor {
+            position: relative !important;
+            display: block !important;
+            width: 100% !important;
+            max-width: 1300px !important;
+            margin: 0 auto !important;
+        }
+
+        #curiosidades .titulo {
+            position: relative !important;
+            display: block !important;
+            width: 100% !important;
+            margin: 0 0 55px 0 !important;
+            padding: 0 !important;
+            text-align: center !important;
+            transform: none;
+        }
+
+        #curiosidades .titulo small {
+            position: static !important;
+            display: block !important;
+            width: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            color: #b85c38 !important;
+            font-size: 12px !important;
+            font-weight: bold !important;
+            letter-spacing: 4px !important;
+            text-align: center !important;
+        }
+
+        #curiosidades .titulo h2 {
+            position: static !important;
+            display: block !important;
+            width: auto !important;
+            margin: 14px 0 !important;
+            padding: 0 !important;
+            color: #4a2c1c !important;
+            font-size: clamp(34px, 5vw, 48px) !important;
+            text-align: center !important;
+        }
+
+        #curiosidades .titulo p {
+            position: static !important;
+            display: block !important;
+            max-width: 730px !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+            color: #705f50 !important;
+            font-size: 16px !important;
+            line-height: 1.8 !important;
+            text-align: center !important;
+        }
+
+        #curiosidades .curiosidades-grid {
+            position: relative !important;
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 25px !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            align-items: stretch !important;
+        }
+
+        #curiosidades .curiosidad {
+            position: relative !important;
+            display: block !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            min-height: 250px !important;
+            margin: 0 !important;
+            padding: 32px !important;
+            overflow: hidden !important;
+            border-radius: 22px !important;
+            background: rgba(255,255,255,.56) !important;
+            border: 1px solid rgba(112,69,43,.16) !important;
+            box-shadow: 0 15px 32px rgba(70,40,20,.10) !important;
+            text-align: left !important;
+        }
+
+        #curiosidades .curiosidad-icono {
+            position: static !important;
+            display: block !important;
+            width: auto !important;
+            height: auto !important;
+            margin: 0 0 13px 0 !important;
+            padding: 0 !important;
+            transform: none;
+            font-size: 47px !important;
+            text-align: left !important;
+        }
+
+        #curiosidades .curiosidad span {
+            position: static !important;
+            display: inline-block !important;
+            width: auto !important;
+            height: auto !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            transform: none !important;
+            color: #b85c38 !important;
+            font-size: 10px !important;
+            font-weight: bold !important;
+            letter-spacing: 2px !important;
+            text-align: left !important;
+        }
+
+        #curiosidades .curiosidad h3 {
+            position: static !important;
+            display: block !important;
+            width: auto !important;
+            height: auto !important;
+            margin: 10px 0 !important;
+            padding: 0 !important;
+            transform: none !important;
+            color: #4a2c1c !important;
+            font-size: 20px !important;
+            line-height: 1.3 !important;
+            text-align: left !important;
+        }
+
+        #curiosidades .curiosidad p {
+            position: static !important;
+            display: block !important;
+            width: auto !important;
+            height: auto !important;
+            min-height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            transform: none !important;
+            color: #705f50 !important;
+            font-size: 14px !important;
+            line-height: 1.7 !important;
+            text-align: left !important;
+        }
+
+        .restaurante-card {
+            padding: 0 0 28px !important;
+        }
+
+        .restaurante-imagen {
+            position: relative;
+            width: 100%;
+            height: 230px;
+            margin-bottom: 25px;
+            overflow: hidden;
+            border-radius: 25px 25px 0 0;
+            background: #d8c0a0;
+        }
+
+        .restaurante-imagen img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition:
+                transform .7s ease,
+                filter .5s ease;
+        }
+
+        .restaurante-card:hover .restaurante-imagen img {
+            transform: scale(1.12);
+            filter:
+                saturate(1.1)
+                contrast(1.05);
+        }
+
+        .restaurante-imagen::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(36,20,13,.55),
+                    transparent 55%
+                );
+            pointer-events: none;
+        }
+
+        .restaurante-foto-etiqueta {
+            position: absolute;
+            left: 16px;
+            bottom: 14px;
+            z-index: 3;
+            padding: 7px 13px;
+            border-radius: 25px;
+            background: rgba(36,20,13,.88);
+            color: #f0ca72;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .restaurante-card .tipo-restaurante,
+        .restaurante-card h3,
+        .restaurante-card p,
+        .restaurante-card .restaurante-datos,
+        .restaurante-card .restaurante-boton {
+            margin-left: 24px;
+            margin-right: 24px;
+        }
+
+        .restaurante-card .restaurante-boton {
+            width: calc(100% - 48px);
+        }
+
+        .hoteles {
+            position: relative;
+            overflow: hidden;
+            padding: 110px 7%;
+            background:
+                radial-gradient(
+                    circle at top right,
+                    rgba(217,164,65,.18),
+                    transparent 32%
+                ),
+                linear-gradient(
+                    135deg,
+                    #24140d 0%,
+                    #4a2c1c 45%,
+                    #70452b 100%
+                );
+        }
+
+        .hoteles::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 250px;
+            opacity: .14;
+            background: #f0ca72;
+            clip-path:
+                polygon(
+                    0 100%,
+                    0 78%,
+                    10% 58%,
+                    20% 73%,
+                    31% 45%,
+                    42% 70%,
+                    53% 39%,
+                    65% 69%,
+                    76% 48%,
+                    87% 72%,
+                    100% 51%,
+                    100% 100%
+                );
+        }
+
+        .hoteles .contenedor {
+            position: relative;
+            z-index: 3;
+        }
+
+        .hoteles .titulo small {
+            color: #f0ca72;
+        }
+
+        .hoteles .titulo h2 {
+            color: #ffffff;
+        }
+
+        .hoteles .titulo p {
+            color: #ead7bb;
+        }
+
+        .hoteles-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .hotel-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 25px;
+            background:
+                linear-gradient(
+                    145deg,
+                    #fffaf0,
+                    #ead7bb
+                );
+            box-shadow:
+                0 20px 45px
+                rgba(0,0,0,.28);
+            transition:
+                transform .45s ease,
+                box-shadow .45s ease;
+        }
+
+        .hotel-card:hover {
+            transform:
+                translateY(-13px);
+            box-shadow:
+                0 35px 70px
+                rgba(0,0,0,.42);
+        }
+
+        .hotel-imagen {
+            position: relative;
+            width: 100%;
+            height: 235px;
+            overflow: hidden;
+            background: #c5a57c;
+        }
+
+        .hotel-imagen img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            transition:
+                transform .7s ease,
+                filter .5s ease;
+        }
+
+        .hotel-card:hover .hotel-imagen img {
+            transform:
+                scale(1.12);
+            filter:
+                saturate(1.12)
+                contrast(1.06);
+        }
+
+        .hotel-imagen::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(36,20,13,.75),
+                    transparent 62%
+                );
+        }
+
+        .hotel-etiqueta {
+            position: absolute;
+            left: 16px;
+            bottom: 15px;
+            z-index: 5;
+            padding: 8px 14px;
+            border-radius: 25px;
+            background:
+                rgba(36,20,13,.90);
+            color: #f0ca72;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hotel-icono {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 6;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background:
+                rgba(255,255,255,.92);
+            font-size: 25px;
+            box-shadow:
+                0 8px 20px
+                rgba(0,0,0,.25);
+            transition: .4s;
+        }
+
+        .hotel-card:hover .hotel-icono {
+            transform:
+                rotate(8deg)
+                scale(1.12);
+        }
+
+        .hotel-contenido {
+            padding: 25px;
+        }
+
+        .hotel-categoria {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 7px 12px;
+            border-radius: 20px;
+            background:
+                rgba(184,92,56,.13);
+            color: #9a4d2c;
+            font-size: 9px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hotel-card h3 {
+            margin-bottom: 13px;
+            color: #4a2c1c;
+            font-size: 21px;
+        }
+
+        .hotel-card p {
+            min-height: 95px;
+            margin-bottom: 18px;
+            color: #705f50;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .hotel-datos {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top:
+                1px solid
+                rgba(112,69,43,.16);
+        }
+
+        .hotel-datos span {
+            color: #6f513b;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .hotel-boton {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .hotel-frase {
+            position: relative;
+            z-index: 3;
+            max-width: 900px;
+            margin: 65px auto 0;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            text-align: center;
+            border:
+                1px solid
+                rgba(240,202,114,.25);
+            border-radius: 25px;
+            background:
+                rgba(255,255,255,.07);
+            backdrop-filter:
+                blur(10px);
+            color: white;
+        }
+
+        .hotel-frase-icono {
+            font-size: 52px;
+            animation:
+                flotar
+                3s ease-in-out infinite;
+        }
+
+        .hotel-frase small {
+            color: #f0ca72;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hotel-frase h3 {
+            margin: 8px 0;
+            color: white;
+            font-size: 25px;
+        }
+
+        .hotel-frase p {
+            color: #ead7bb;
+            line-height: 1.7;
+        }
+
+        @media(min-width:1051px) {
+            #cosas-hacer .cosas-hacer-grid {
+                display: grid;
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 25px;
+                max-width: 1150px;
+                margin: 0 auto;
+            }
+        }
+
+        @media(max-width:1200px) {
+            #menu ul {
+                gap: 11px;
+            }
+
+            #menu a {
+                font-size: 14px !important;
+            }
+        }
+
+        @media(max-width:1050px) {
+            #curiosidades .curiosidades-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+            }
+
+            #cosas-hacer .cosas-hacer-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .hoteles-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+            #menu a {
+                font-size: 17px !important;
+                padding: 13px 8px;
+            }
+
+            #menu ul {
+                gap: 0;
+            }
+        }
+
+        @media(max-width:650px) {
+            #curiosidades {
+                padding: 75px 20px !important;
+            }
+
+            #curiosidades .curiosidades-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            #cosas-hacer .cosas-hacer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .restaurante-imagen {
+                height: 250px;
+            }
+
+            .hoteles {
+                padding:
+                    80px 20px;
+            }
+
+            .hoteles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hotel-imagen {
+                height: 260px;
+            }
+
+            .hotel-frase {
+                flex-direction: column;
+                padding:
+                    28px 20px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="intro">
+
+    <div class="burbujas-intro" id="burbujasIntro"></div>
+
+    <div class="intro-contenido">
+
+        <div class="intro-pequeno">
+            BOYACÁ · COLOMBIA
+        </div>
+
+        <div class="pliosaurio intro-pliosaurio">
+
+            <svg viewBox="0 0 600 300">
+
+                <path
+                    d="M310 150 C350 105 360 45 410 40 C445 36 460 60 445 82 C430 103 390 98 380 80"
+                    fill="none"
+                    stroke="#b9a37b"
+                    stroke-width="28"
+                    stroke-linecap="round"
+                />
+
+                <ellipse
+                    cx="435"
+                    cy="65"
+                    rx="42"
+                    ry="28"
+                    fill="#c7b083"
+                />
+
+                <circle
+                    cx="455"
+                    cy="57"
+                    r="5"
+                    fill="#24140d"
+                />
+
+                <ellipse
+                    cx="275"
+                    cy="155"
+                    rx="130"
+                    ry="65"
+                    fill="#a68c62"
+                />
+
+                <path
+                    d="M160 160 C110 145 85 105 50 115 C85 140 85 175 40 200 C100 200 125 180 175 175"
+                    fill="#927951"
+                />
+
+                <path
+                    d="M275 100 C250 60 230 45 220 55 C225 90 235 110 250 120"
+                    fill="#806b49"
+                />
+
+                <path
+                    d="M275 210 C250 245 230 260 220 250 C225 220 235 200 250 190"
+                    fill="#806b49"
+                />
+
+                <path
+                    d="M350 125 C390 105 420 105 425 120 C400 145 375 155 350 150"
+                    fill="#806b49"
+                />
+
+                <path
+                    d="M350 185 C390 210 410 215 420 200 C395 175 375 165 350 170"
+                    fill="#806b49"
+                />
+
+            </svg>
+
+        </div>
+
+        <h1>SÁCHICA</h1>
+
+        <p class="intro-texto">
+            TIERRA DE HISTORIA · CULTURA · NATURALEZA
+        </p>
+
+        <div class="cargando">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+<header id="header">
+
+    <div class="nav">
+
+        <a href="#inicio" class="logo">
+            Sáchica<span>Tour</span>
+        </a>
+
+        <button class="menu-btn" id="menuBtn">
+            ☰
+        </button>
+
+        <nav id="menu">
+
+            <ul>
+
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#lugares">Lugares</a></li>
+                <li><a href="#cosas-hacer">Qué hacer</a></li>
+                <li><a href="#restaurantes">Restaurantes</a></li>
+                <li><a href="#hoteles">Hoteles</a></li>
+                <li><a href="#rutas">Rutas</a></li>
+                <li><a href="#prehistoria">Prehistoria</a></li>
+                <li><a href="#curiosidades">Curiosidades</a></li>
+                <li><a href="#galeria">Galería</a></li>
+                <li><a href="#ubicacion">Mapa</a></li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+<section class="hero" id="inicio">
+
+    <div class="hero-fondo"></div>
+
+    <div class="particulas-hero" id="particulasHero"></div>
+
+    <div class="hero-contenido">
+
+        <div class="etiqueta">
+            ✦ RUTA TURÍSTICA DE SÁCHICA ✦
+        </div>
+
+        <h2>
+            Descubre
+            <span>Sáchica</span>
+        </h2>
+
+        <p>
+            Un recorrido por la historia, cultura,
+            naturaleza y patrimonio de uno de los
+            municipios más interesantes de Boyacá.
+        </p>
+
+        <div class="hero-botones">
+
+            <a href="#lugares" class="boton">
+                EXPLORAR SÁCHICA
+            </a>
+
+            <a href="#rutas" class="boton boton-outline">
+                🧭 VER RUTAS
+            </a>
+
+        </div>
+
+    </div>
+
+    <a href="#historia" class="scroll-indicador">
+        <span>DESLIZA</span>
+        ↓
+    </a>
+
+</section>
+
+<section class="historia fondo-montanas" id="historia">
+
+    <div class="montana-fondo mf1"></div>
+    <div class="montana-fondo mf2"></div>
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>CONOCE EL MUNICIPIO</small>
+
+            <h2>Una tierra con historia</h2>
+
+            <p>
+                Sáchica conserva elementos históricos,
+                religiosos, arqueológicos y culturales
+                que hacen parte de la identidad de Boyacá.
+            </p>
+
+        </div>
+
+        <div class="historia-grid">
+
+            <div class="historia-imagen revelar izquierda">
+
+                <img
+                    src="imagenes/principal.jpeg"
+                    alt="Sáchica"
+                    class="imagen-patrimonio"
+                >
+
+                <div class="brillo-imagen"></div>
+
+            </div>
+
+            <div class="historia-texto revelar derecha">
+
+                <div class="icono-flotante">
+                    🏛️
+                </div>
+
+                <h3>Patrimonio y tradición</h3>
+
+                <p>
+                    En el municipio se encuentran lugares
+                    como el Templo Doctrinero, la Cruz Atrial,
+                    la Piedra del Castigo y las pinturas rupestres.
+                </p>
+
+                <p>
+                    También existen atractivos relacionados
+                    con la naturaleza, la peregrinación
+                    y la prehistoria.
+                </p>
+
+                <a href="#lugares" class="boton">
+                    CONOCER LOS LUGARES
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="lugares fondo-montanas" id="lugares">
+
+    <div class="montana-fondo mf3"></div>
+    <div class="montana-fondo mf4"></div>
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>DESTINOS TURÍSTICOS</small>
+
+            <h2>Lugares para descubrir</h2>
+
+            <p>
+                Pulsa “Conocer más” para ver la página del lugar
+                o “Ver ruta” para iniciar el recorrido animado.
+            </p>
+
+        </div>
+
+        <div class="tarjetas">
+
+            <article class="tarjeta revelar">
+
+                <div class="tarjeta-imagen">
+                    <img src="imagenes/templo.webp" alt="Templo Doctrinero">
+                    <span class="numero">01</span>
+                    <span class="tag">PATRIMONIO</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+
+                    <h3>⛪ Templo Doctrinero</h3>
+
+                    <p>
+                        Uno de los elementos históricos
+                        y religiosos más representativos
+                        de Sáchica.
+                    </p>
+
+                    <div class="acciones-tarjeta">
+
+                        <a href="lugar.html?lugar=templo" class="conocer">
+                            CONOCER MÁS →
+                        </a>
+
+                        <button class="ruta-btn" data-ruta="templo">
+                            🧭 VER RUTA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="tarjeta revelar">
+
+                <div class="tarjeta-imagen">
+                    <img src="imagenes/calvario.jpg" alt="Monte Calvario">
+                    <span class="numero">02</span>
+                    <span class="tag">RELIGIOSO</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+
+                    <h3>⛰️ Monte Calvario</h3>
+
+                    <p>
+                        Sendero relacionado con
+                        peregrinaciones, paisaje
+                        y tradición religiosa.
+                    </p>
+
+                    <div class="acciones-tarjeta">
+
+                        <a href="lugar.html?lugar=calvario" class="conocer">
+                            CONOCER MÁS →
+                        </a>
+
+                        <button class="ruta-btn" data-ruta="calvario">
+                            🧭 VER RUTA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="tarjeta revelar">
+
+                <div class="tarjeta-imagen">
+                    <img src="imagenes/plaza.jpg" alt="Plaza Principal">
+                    <span class="numero">03</span>
+                    <span class="tag">CULTURA</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+
+                    <h3>🏛️ Plaza Principal</h3>
+
+                    <p>
+                        Punto central para comenzar
+                        un recorrido por el patrimonio
+                        del municipio.
+                    </p>
+
+                    <div class="acciones-tarjeta">
+
+                        <a href="lugar.html?lugar=plaza" class="conocer">
+                            CONOCER MÁS →
+                        </a>
+
+                        <button class="ruta-btn" data-ruta="plaza">
+                            🧭 VER RUTA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="tarjeta revelar">
+
+                <div class="tarjeta-imagen">
+                    <img src="imagenes/pinturas.webp" alt="Pinturas Rupestres">
+                    <span class="numero">04</span>
+                    <span class="tag">ARQUEOLOGÍA</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+
+                    <h3>🪨 Pinturas Rupestres</h3>
+
+                    <p>
+                        Manifestaciones rupestres
+                        que conectan el territorio
+                        con su pasado precolombino.
+                    </p>
+
+                    <div class="acciones-tarjeta">
+
+                        <a href="lugar.html?lugar=pinturas" class="conocer">
+                            CONOCER MÁS →
+                        </a>
+
+                        <button class="ruta-btn" data-ruta="pinturas">
+                            🧭 VER RUTA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="tarjeta revelar">
+
+                <div class="tarjeta-imagen">
+                    <img src="imagenes/piedra.jpg" alt="Piedra del Castigo">
+                    <span class="numero">05</span>
+                    <span class="tag">HISTORIA</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+
+                    <h3>🪨 Piedra del Castigo</h3>
+
+                    <p>
+                        Elemento histórico situado
+                        dentro del entorno patrimonial
+                        del centro de Sáchica.
+                    </p>
+
+                    <div class="acciones-tarjeta">
+
+                        <a href="lugar.html?lugar=piedra" class="conocer">
+                            CONOCER MÁS →
+                        </a>
+
+                        <button class="ruta-btn" data-ruta="piedra">
+                            🧭 VER RUTA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="tarjeta revelar">
+
+                <div class="tarjeta-imagen">
+                    <img src="imagenes/dino.jpg" alt="Gondava">
+                    <span class="numero">06</span>
+                    <span class="tag">PREHISTORIA</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+
+                    <h3>🦖 Gondava</h3>
+
+                    <p>
+                        Parque temático dedicado
+                        al mundo de los dinosaurios
+                        y la prehistoria.
+                    </p>
+
+                    <div class="acciones-tarjeta">
+
+                        <a href="lugar.html?lugar=gondava" class="conocer">
+                            CONOCER MÁS →
+                        </a>
+
+                        <button class="ruta-btn" data-ruta="gondava">
+                            🧭 VER RUTA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="tarjeta revelar">
+
+                <div class="tarjeta-imagen">
+                    <img src="imagenes/cruz.jpg" alt="Cruz Atrial">
+                    <span class="numero">07</span>
+                    <span class="tag">PATRIMONIO</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+
+                    <h3>✝️ Cruz Atrial</h3>
+
+                    <p>
+                        Cruz monolítica frente
+                        al conjunto doctrinero
+                        y parte del patrimonio local.
+                    </p>
+
+                    <div class="acciones-tarjeta">
+
+                        <a href="lugar.html?lugar=cruz" class="conocer">
+                            CONOCER MÁS →
+                        </a>
+
+                        <button class="ruta-btn" data-ruta="cruz">
+                            🧭 VER RUTA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+            <article class="tarjeta revelar">
+
+                <div class="tarjeta-imagen">
+                    <img src="imagenes/termales.jpg" alt="Aguas Termales">
+                    <span class="numero">08</span>
+                    <span class="tag">NATURALEZA</span>
+                </div>
+
+                <div class="tarjeta-contenido">
+
+                    <h3>♨️ Aguas Termales</h3>
+
+                    <p>
+                        Atractivo natural relacionado
+                        con las fuentes termales
+                        de la zona.
+                    </p>
+
+                    <div class="acciones-tarjeta">
+
+                        <a href="lugar.html?lugar=termales" class="conocer">
+                            CONOCER MÁS →
+                        </a>
+
+                        <button class="ruta-btn" data-ruta="termales">
+                            🧭 VER RUTA
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="cosas-hacer fondo-montanas" id="cosas-hacer">
+
+    <div class="montana-fondo mf5"></div>
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>VIVE SÁCHICA</small>
+
+            <h2>Cosas que hacer en Sáchica</h2>
+
+            <p>
+                Descubre experiencias que combinan
+                prehistoria, gastronomía, agricultura,
+                tradición, aventura, naturaleza y paisaje.
+            </p>
+
+        </div>
+
+        <div class="cosas-hacer-grid">
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">🦖</div>
+
+                <span class="cosa-numero">01</span>
+
+                <small>PREHISTORIA</small>
+
+                <h3>
+                    Conocer los dinosaurios
+                </h3>
+
+                <p>
+                    Visita los atractivos relacionados
+                    con los dinosaurios y descubre el mundo
+                    prehistórico de la región.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=dinosaurio"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">🐔</div>
+
+                <span class="cosa-numero">02</span>
+
+                <small>GASTRONOMÍA</small>
+
+                <h3>
+                    Comer gallina y disfrutar su festival
+                </h3>
+
+                <p>
+                    Prueba una deliciosa gallina preparada
+                    al estilo tradicional y conoce el Festival
+                    de la Gallina.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=gallina"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">🌱</div>
+
+                <span class="cosa-numero">03</span>
+
+                <small>AGRICULTURA</small>
+
+                <h3>
+                    Conocer los cultivos
+                </h3>
+
+                <p>
+                    Recorre el paisaje rural y conoce
+                    algunos de los cultivos que forman parte
+                    de la actividad agrícola de Sáchica.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=cultivos"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">⛪</div>
+
+                <span class="cosa-numero">04</span>
+
+                <small>TRADICIÓN</small>
+
+                <h3>
+                    Vivir la Semana Santa en vivo
+                </h3>
+
+                <p>
+                    Conoce una de las tradiciones
+                    religiosas más importantes de Sáchica
+                    y vive sus diferentes actividades.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=semana"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">🏞️</div>
+
+                <span class="cosa-numero">05</span>
+
+                <small>MIRADOR · AVENTURA</small>
+
+                <h3>
+                    Mirador Las Terrazas
+                </h3>
+
+                <p>
+                    Disfruta de un mirador con paisajes
+                    de Sáchica y actividades recreativas
+                    como cuatrimotos y go-karts.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=terrazas"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">🌄</div>
+
+                <span class="cosa-numero">06</span>
+
+                <small>MIRADOR · NATURALEZA</small>
+
+                <h3>
+                    Mirador Camino Real
+                </h3>
+
+                <p>
+                    Disfruta del paisaje de Sáchica,
+                    toma fotografías y conoce un espacio
+                    diferente al aire libre.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=camino-real"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">🫒</div>
+
+                <span class="cosa-numero">07</span>
+
+                <small>NATURALEZA · AGRICULTURA</small>
+
+                <h3>
+                    Conocer Olivanto
+                </h3>
+
+                <p>
+                    Descubre un huerto de olivos,
+                    conoce este cultivo característico
+                    de la zona y disfruta del paisaje rural.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=olivanto"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">🍇</div>
+
+                <span class="cosa-numero">08</span>
+
+                <small>AGRICULTURA · PAISAJE</small>
+
+                <h3>
+                    Conocer El Viñedo
+                </h3>
+
+                <p>
+                    Recorre cultivos de uva,
+                    conoce cómo se desarrolla la vid
+                    y disfruta del paisaje del valle.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=vinedo"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+            <article class="cosa-hacer revelar">
+
+                <div class="cosa-icono">🎨</div>
+
+                <span class="cosa-numero">09</span>
+
+                <small>ECOPARQUE · DIVERSIÓN</small>
+
+                <h3>
+                    Tierra de Colores
+                </h3>
+
+                <p>
+                    Disfruta de un espacio recreativo
+                    al aire libre para compartir,
+                    recorrer y vivir una experiencia diferente.
+                </p>
+
+                <a
+                    href="experiencias.html?tipo=tierra-colores"
+                    class="cosa-enlace"
+                >
+                    CONOCER MÁS →
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="gastronomia" id="restaurantes">
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>🍽️ SABORES DE SÁCHICA</small>
+
+            <h2>¿Dónde comer en Sáchica?</h2>
+
+            <p>
+                Conoce algunos lugares donde puedes
+                detenerte a comer durante tu recorrido
+                por el municipio.
+            </p>
+
+        </div>
+
+        <div class="restaurantes-grid">
+
+            <article class="restaurante-card revelar">
+
+                <div class="restaurante-imagen">
+
+                    <img
+                        src="imagenes/gallinaa.webp"
+                        alt="El Rincón de la Gallina"
+                    >
+
+                    <span class="restaurante-foto-etiqueta">
+                        RESTAURANTE
+                    </span>
+
+                </div>
+
+                <span class="tipo-restaurante">
+                    COMIDA TRADICIONAL
+                </span>
+
+                <h3>
+                    El Rincón de la Gallina
+                </h3>
+
+                <p>
+                    Una opción para disfrutar
+                    de sabores tradicionales
+                    durante tu visita a Sáchica.
+                </p>
+
+                <div class="restaurante-datos">
+                    <span>📍 Sáchica, Boyacá</span>
+                </div>
+
+                <a
+                    class="boton restaurante-boton"
+                    href="https://www.google.com/maps/search/?api=1&query=Restaurante+El+Rincon+de+la+Gallina+Sachica+Boyaca"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    📍 VER UBICACIÓN
+                </a>
+
+            </article>
+
+            <article class="restaurante-card revelar">
+
+                <div class="restaurante-imagen">
+
+                    <img
+                        src="imagenes/comida.jpg"
+                        alt="Olivos Comida"
+                    >
+
+                    <span class="restaurante-foto-etiqueta">
+                        RESTAURANTE
+                    </span>
+
+                </div>
+
+                <span class="tipo-restaurante">
+                    GASTRONOMÍA
+                </span>
+
+                <h3>
+                    Olivos Comida
+                </h3>
+
+                <p>
+                    Una alternativa gastronómica
+                    para compartir y disfrutar
+                    diferentes preparaciones.
+                </p>
+
+                <div class="restaurante-datos">
+                    <span>📍 Sáchica, Boyacá</span>
+                </div>
+
+                <a
+                    class="boton restaurante-boton"
+                    href="https://www.google.com/maps/search/?api=1&query=Olivos+Comida+Sachica+Boyaca"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    📍 VER UBICACIÓN
+                </a>
+
+            </article>
+
+            <article class="restaurante-card revelar">
+
+                <div class="restaurante-imagen">
+
+                    <img
+                        src="imagenes/sol.jpg"
+                        alt="El Portal del Sol y la Luna"
+                    >
+
+                    <span class="restaurante-foto-etiqueta">
+                        RESTAURANTE
+                    </span>
+
+                </div>
+
+                <span class="tipo-restaurante">
+                    COMIDA COLOMBIANA
+                </span>
+
+                <h3>
+                    El Portal del Sol y la Luna
+                </h3>
+
+                <p>
+                    Una opción para detenerse
+                    a comer durante un recorrido
+                    turístico por el municipio.
+                </p>
+
+                <div class="restaurante-datos">
+                    <span>📍 Sáchica, Boyacá</span>
+                </div>
+
+                <a
+                    class="boton restaurante-boton"
+                    href="https://www.google.com/maps/search/?api=1&query=Restaurante+El+Portal+del+Sol+y+la+Luna+Sachica+Boyaca"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    📍 VER UBICACIÓN
+                </a>
+
+            </article>
+
+            <article class="restaurante-card revelar">
+
+                <div class="restaurante-imagen">
+
+                    <img
+                        src="imagenes/aa.png"
+                        alt="FÓGATA&SAZÓN"
+                    >
+
+                    <span class="restaurante-foto-etiqueta">
+                        RESTAURANTE
+                    </span>
+
+                </div>
+
+                <span class="tipo-restaurante">
+                    GASTRONOMÍA
+                </span>
+
+                <h3>
+                    FÓGATA&SAZÓN
+                </h3>
+
+                <p>
+                    Una alternativa para complementar
+                    el recorrido turístico con
+                    una experiencia gastronómica.
+                </p>
+
+                <div class="restaurante-datos">
+                    <span>📍 Sáchica, Boyacá</span>
+                </div>
+
+                <a
+                    class="boton restaurante-boton"
+                    href="https://www.google.com/maps/search/?api=1&query=FOGATA+SAZON+Sachica+Boyaca"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    📍 VER UBICACIÓN
+                </a>
+
+            </article>
+
+        </div>
+
+        <div class="frase-gastronomica revelar">
+
+            <div class="olla-flotante">
+                🍲
+            </div>
+
+            <div>
+
+                <small>SABORES DE NUESTRA TIERRA</small>
+
+                <h3>
+                    Disfruta la gastronomía de Sáchica
+                </h3>
+
+                <p>
+                    Conocer un municipio también es descubrir
+                    sus sabores, sus costumbres y la manera
+                    en que recibe a sus visitantes.
+                </p>
+
+            </div>
+
+            <div class="gallina-estatica">
+                🐔
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="hoteles" id="hoteles">
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>
+                🏨 DESCANSA EN SÁCHICA
+            </small>
+
+            <h2>
+                ¿Dónde hospedarse?
+            </h2>
+
+            <p>
+                Después de recorrer Sáchica,
+                encuentra opciones de alojamiento
+                para descansar y continuar disfrutando
+                del municipio.
+            </p>
+
+        </div>
+
+        <div class="hoteles-grid">
+
+            <article class="hotel-card revelar">
+
+                <div class="hotel-imagen">
+
+                    <img
+                        src="imagenes/sirus.jpg"
+                        alt="Hotel Gran Sirius"
+                    >
+
+                    <span class="hotel-etiqueta">
+                        HOTEL
+                    </span>
+
+                    <div class="hotel-icono">
+                        🏨
+                    </div>
+
+                </div>
+
+                <div class="hotel-contenido">
+
+                    <span class="hotel-categoria">
+                        ALOJAMIENTO
+                    </span>
+
+                    <h3>
+                        Hotel Gran Sirius
+                    </h3>
+
+                    <p>
+                        Una opción de alojamiento
+                        en Sáchica para descansar
+                        después de conocer los diferentes
+                        atractivos del municipio.
+                    </p>
+
+                    <div class="hotel-datos">
+
+                        <span>
+                            📍 Sáchica, Boyacá
+                        </span>
+
+                        <span>
+                            🛏️ Hospedaje
+                        </span>
+
+                    </div>
+
+                    <a
+                        class="boton hotel-boton"
+                        href="https://www.google.com/maps/search/?api=1&query=Hotel+Gran+Sirius+Sachica+Boyaca"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        📍 VER UBICACIÓN
+                    </a>
+
+                </div>
+
+            </article>
+
+            <article class="hotel-card revelar">
+
+                <div class="hotel-imagen">
+
+                    <img
+                        src="imagenes/medina.jpg"
+                        alt="Plaza Medina Hotel"
+                    >
+
+                    <span class="hotel-etiqueta">
+                        HOTEL
+                    </span>
+
+                    <div class="hotel-icono">
+                        🛎️
+                    </div>
+
+                </div>
+
+                <div class="hotel-contenido">
+
+                    <span class="hotel-categoria">
+                        HOSPEDAJE
+                    </span>
+
+                    <h3>
+                        Plaza Medina Hotel
+                    </h3>
+
+                    <p>
+                        Una alternativa para hospedarse
+                        dentro de Sáchica y tener un punto
+                        de descanso durante el recorrido
+                        turístico por el municipio.
+                    </p>
+
+                    <div class="hotel-datos">
+
+                        <span>
+                            📍 Calle 3 #1-14
+                        </span>
+
+                        <span>
+                            🏘️ Sáchica, Boyacá
+                        </span>
+
+                    </div>
+
+                    <a
+                        class="boton hotel-boton"
+                        href="https://www.google.com/maps/search/?api=1&query=Plaza+Medina+Hotel+Sachica+Boyaca"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        📍 VER UBICACIÓN
+                    </a>
+
+                </div>
+
+            </article>
+
+            <article class="hotel-card revelar">
+
+                <div class="hotel-imagen">
+
+                    <img
+                        src="imagenes/villa.jpg"
+                        alt="Hotel Spa Villasaurio"
+                    >
+
+                    <span class="hotel-etiqueta">
+                        HOTEL
+                    </span>
+
+                    <div class="hotel-icono">
+                        🏡
+                    </div>
+
+                </div>
+
+                <div class="hotel-contenido">
+
+                    <span class="hotel-categoria">
+                        DESCANSO
+                    </span>
+
+                    <h3>
+                        Hotel Spa Villasaurio
+                    </h3>
+
+                    <p>
+                        Otra opción de alojamiento
+                        en Sáchica para quienes desean
+                        descansar mientras conocen
+                        los atractivos de la región.
+                    </p>
+
+                    <div class="hotel-datos">
+
+                        <span>
+                            📍 Carrera 5 #4-65
+                        </span>
+
+                        <span>
+                            🏘️ Sáchica, Boyacá
+                        </span>
+
+                    </div>
+
+                    <a
+                        class="boton hotel-boton"
+                        href="https://www.google.com/maps/search/?api=1&query=Hotel+Spa+Villasaurio+Sachica+Boyaca"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        📍 VER UBICACIÓN
+                    </a>
+
+                </div>
+
+            </article>
+
+            <article class="hotel-card revelar">
+
+                <div class="hotel-imagen">
+
+                    <img
+                        src="imagenes/luisa.jpg"
+                        alt="Hotel Villa Luisa Sáchica"
+                    >
+
+                    <span class="hotel-etiqueta">
+                        HOTEL
+                    </span>
+
+                    <div class="hotel-icono">
+                        🛏️
+                    </div>
+
+                </div>
+
+                <div class="hotel-contenido">
+
+                    <span class="hotel-categoria">
+                        ALOJAMIENTO
+                    </span>
+
+                    <h3>
+                        Hotel Villa Luisa Sáchica
+                    </h3>
+
+                    <p>
+                        Un lugar para complementar
+                        la visita al municipio con
+                        una opción de hospedaje
+                        dentro de Sáchica.
+                    </p>
+
+                    <div class="hotel-datos">
+
+                        <span>
+                            📍 Carrera 6 #1-33
+                        </span>
+
+                        <span>
+                            🏘️ Sáchica, Boyacá
+                        </span>
+
+                    </div>
+
+                    <a
+                        class="boton hotel-boton"
+                        href="https://www.google.com/maps/search/?api=1&query=Hotel+Villa+Luisa+Sachica+Boyaca"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        📍 VER UBICACIÓN
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+        <div class="hotel-frase revelar">
+
+            <div class="hotel-frase-icono">
+                🌙
+            </div>
+
+            <div>
+
+                <small>
+                    DESCANSA Y SIGUE EXPLORANDO
+                </small>
+
+                <h3>
+                    Quédate una noche más en Sáchica
+                </h3>
+
+                <p>
+                    Encuentra un lugar para descansar
+                    y continúa descubriendo los paisajes,
+                    la cultura y los atractivos del municipio.
+                </p>
+
+            </div>
+
+            <div class="hotel-frase-icono">
+                🏨
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="rutas" id="rutas">
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>🧭 EXPLORA EL CAMINO</small>
+
+            <h2>Encuentra tu ruta</h2>
+
+            <p>
+                Elige un destino.
+                El caminante seguirá el recorrido animado
+                y aparecerá la opción para abrir
+                la navegación real.
+            </p>
+
+        </div>
+
+        <div class="selector-rutas revelar">
+
+            <button data-ruta="pinturas">
+                🪨 Pinturas
+            </button>
+
+            <button data-ruta="pliosaurio">
+                🦕 Pliosaurio
+            </button>
+
+            <button data-ruta="templo">
+                ⛪ Templo
+            </button>
+
+            <button data-ruta="piedra">
+                🪨 Piedra
+            </button>
+
+            <button data-ruta="gondava">
+                🦖 Gondava
+            </button>
+
+            <button data-ruta="calvario">
+                ⛰️ Calvario
+            </button>
+
+            <button data-ruta="cruz">
+                ✝️ Cruz
+            </button>
+
+            <button data-ruta="termales">
+                ♨️ Termales
+            </button>
+
+        </div>
+
+        <div class="mapa-ruta revelar">
+
+            <div class="sol-ruta">☀️</div>
+
+            <div class="nube nube1">☁️</div>
+            <div class="nube nube2">☁️</div>
+
+            <div class="montana-ruta montana-r1"></div>
+            <div class="montana-ruta montana-r2"></div>
+            <div class="montana-ruta montana-r3"></div>
+
+            <div class="arbol arbol1">🌳</div>
+            <div class="arbol arbol2">🌳</div>
+
+            <div class="inicio-ruta">
+
+                📍
+
+                <span>
+                    Sáchica
+                </span>
+
+            </div>
+
+            <svg
+                class="camino-svg"
+                viewBox="0 0 1000 350"
+                preserveAspectRatio="none"
+            >
+
+                <path
+                    class="linea-ruta"
+                    d="M70 270 C180 130 270 310 365 215 C460 110 540 275 640 190 C740 100 825 260 930 130">
+                </path>
+
+            </svg>
+
+            <div class="viajero" id="viajero">
+                🚶
+            </div>
+
+            <div class="destino-ruta" id="destinoRuta">
+                🏁
+            </div>
+
+        </div>
+
+        <div class="ruta-info revelar" id="rutaInfo">
+
+            <div class="ruta-icono">
+                🧭
+            </div>
+
+            <h3>
+                Selecciona un destino
+            </h3>
+
+            <p>
+                Pulsa cualquiera de los botones
+                para iniciar la ruta.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="prehistoria" id="prehistoria">
+
+    <div
+        class="particulas-mar"
+        id="particulasMar"
+    ></div>
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>
+                UN VIAJE AL PASADO
+            </small>
+
+            <h2>
+                El mundo prehistórico
+            </h2>
+
+            <p>
+                La región de Villa de Leyva
+                y sus alrededores es reconocida
+                por su patrimonio paleontológico.
+            </p>
+
+        </div>
+
+        <div class="fosiles revelar">
+
+            <span>🦴</span>
+            <span>🐚</span>
+            <span>🦕</span>
+            <span>🦴</span>
+
+        </div>
+
+        <div class="pliosaurio-grande revelar">
+
+            <svg viewBox="0 0 600 300">
+
+                <path
+                    d="M310 150 C350 105 360 45 410 40 C445 36 460 60 445 82 C430 103 390 98 380 80"
+                    fill="none"
+                    stroke="#b9a37b"
+                    stroke-width="28"
+                    stroke-linecap="round"
+                />
+
+                <ellipse
+                    cx="435"
+                    cy="65"
+                    rx="42"
+                    ry="28"
+                    fill="#c7b083"
+                />
+
+                <circle
+                    cx="455"
+                    cy="57"
+                    r="5"
+                    fill="#24140d"
+                />
+
+                <ellipse
+                    cx="275"
+                    cy="155"
+                    rx="130"
+                    ry="65"
+                    fill="#a68c62"
+                />
+
+                <path
+                    d="M160 160 C110 145 85 105 50 115 C85 140 85 175 40 200 C100 200 125 180 175 175"
+                    fill="#927951"
+                />
+
+                <path
+                    d="M275 100 C250 60 230 45 220 55 C225 90 235 110 250 120"
+                    fill="#806b49"
+                />
+
+                <path
+                    d="M275 210 C250 245 230 260 220 250 C225 220 235 200 250 190"
+                    fill="#806b49"
+                />
+
+                <path
+                    d="M350 125 C390 105 420 105 425 120 C400 145 375 155 350 150"
+                    fill="#806b49"
+                />
+
+                <path
+                    d="M350 185 C390 210 410 215 420 200 C395 175 375 165 350 170"
+                    fill="#806b49"
+                />
+
+            </svg>
+
+        </div>
+
+        <div class="prehistoria-texto revelar">
+
+            <h3>
+                🦕 Millones de años de historia
+            </h3>
+
+            <p>
+                La paleontología es uno de los elementos
+                más llamativos para comprender
+                el pasado natural de esta región.
+            </p>
+
+            <button
+                class="boton"
+                id="rutaPliosaurio"
+            >
+                🧭 VER RUTA PALEONTOLÓGICA
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section
+    class="curiosidades fondo-montanas"
+    id="curiosidades"
+>
+
+    <div class="montana-fondo mf5"></div>
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>
+                ¿SABÍAS QUE...?
+            </small>
+
+            <h2>
+                Datos curiosos de Sáchica
+            </h2>
+
+            <p>
+                Algunos detalles interesantes
+                para complementar tu recorrido.
+            </p>
+
+        </div>
+
+        <div class="curiosidades-grid">
+
+            <article class="curiosidad revelar">
+
+                <div class="curiosidad-icono">
+                    🏺
+                </div>
+
+                <span>DATO 01</span>
+
+                <h3>
+                    Pasado indígena
+                </h3>
+
+                <p>
+                    El territorio tuvo presencia indígena
+                    antes de la llegada de los españoles.
+                </p>
+
+            </article>
+
+            <article class="curiosidad revelar">
+
+                <div class="curiosidad-icono">
+                    ⛪
+                </div>
+
+                <span>DATO 02</span>
+
+                <h3>
+                    Patrimonio religioso
+                </h3>
+
+                <p>
+                    El conjunto doctrinero y la Cruz Atrial
+                    forman parte del patrimonio cultural
+                    del municipio.
+                </p>
+
+            </article>
+
+            <article class="curiosidad revelar">
+
+                <div class="curiosidad-icono">
+                    🪨
+                </div>
+
+                <span>DATO 03</span>
+
+                <h3>
+                    Arte rupestre
+                </h3>
+
+                <p>
+                    Las pinturas rupestres están asociadas
+                    a formaciones rocosas y antiguos habitantes.
+                </p>
+
+            </article>
+
+            <article class="curiosidad revelar">
+
+                <div class="curiosidad-icono">
+                    🧅
+                </div>
+
+                <span>DATO 04</span>
+
+                <h3>
+                    Tradición agrícola
+                </h3>
+
+                <p>
+                    La agricultura tiene una presencia importante
+                    en el paisaje y economía local.
+                </p>
+
+            </article>
+
+            <article class="curiosidad revelar">
+
+                <div class="curiosidad-icono">
+                    🦕
+                </div>
+
+                <span>DATO 05</span>
+
+                <h3>
+                    Región paleontológica
+                </h3>
+
+                <p>
+                    La zona del Alto Ricaurte
+                    es conocida por su patrimonio
+                    geológico y fósil.
+                </p>
+
+            </article>
+
+            <article class="curiosidad revelar">
+
+                <div class="curiosidad-icono">
+                    🌄
+                </div>
+
+                <span>DATO 06</span>
+
+                <h3>
+                    Paisaje montañoso
+                </h3>
+
+                <p>
+                    Sáchica combina relieve montañoso,
+                    clima seco, patrimonio y zonas rurales.
+                </p>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="galeria" id="galeria">
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>
+                GALERÍA
+            </small>
+
+            <h2>
+                Sáchica en imágenes
+            </h2>
+
+            <p>
+                Una mirada a algunos de sus atractivos.
+            </p>
+
+        </div>
+
+        <div class="galeria-grid">
+
+            <div class="foto foto-grande revelar">
+
+                <img
+                    src="https://situr.boyaca.gov.co/wp-content/uploads/2017/05/panorámica8.jpg"
+                    alt="Sáchica"
+                >
+
+                <span>
+                    Sáchica
+                </span>
+
+            </div>
+
+            <div class="foto revelar">
+
+                <img
+                    src="https://situr.boyaca.gov.co/wp-content/uploads/2017/05/Templo-doctrinero.jpg"
+                    alt="Templo Doctrinero"
+                >
+
+                <span>
+                    Templo Doctrinero
+                </span>
+
+            </div>
+
+            <div class="foto revelar">
+
+                <img
+                    src="https://situr.boyaca.gov.co/wp-content/uploads/2017/05/monte-calvario.jpg"
+                    alt="Monte Calvario"
+                >
+
+                <span>
+                    Monte Calvario
+                </span>
+
+            </div>
+
+            <div class="foto revelar">
+
+                <img
+                    src="https://situr.boyaca.gov.co/wp-content/uploads/2017/05/Gondava.jpg"
+                    alt="Gondava"
+                >
+
+                <span>
+                    Gondava
+                </span>
+
+            </div>
+
+            <div class="foto revelar">
+
+                <img
+                    src="https://situr.boyaca.gov.co/wp-content/uploads/2017/05/panoramica5.jpg"
+                    alt="Piedra del Castigo"
+                >
+
+                <span>
+                    Piedra del Castigo
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="ubicacion" id="ubicacion">
+
+    <div class="contenedor">
+
+        <div class="titulo revelar">
+
+            <small>
+                UBICACIÓN
+            </small>
+
+            <h2>
+                Encuentra Sáchica
+            </h2>
+
+            <p>
+                Sáchica, Boyacá, Colombia.
+            </p>
+
+        </div>
+
+        <div class="mapa revelar">
+
+            <iframe
+                src="https://www.google.com/maps?q=Sachica,Boyaca,Colombia&output=embed"
+                loading="lazy"
+            >
+            </iframe>
+
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <a href="#inicio" class="logo">
+        Sáchica<span>Tour</span>
+    </a>
+
+    <p>
+        Historia · Cultura · Naturaleza · Turismo
+    </p>
+
+    <p>
+        © 2026 Proyecto turístico de
+        <strong>Sáchica, Boyacá</strong>
+    </p>
+
+</footer>
+
+<button id="arriba">
+    ↑
+</button>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
